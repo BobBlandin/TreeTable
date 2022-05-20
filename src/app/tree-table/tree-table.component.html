@@ -1,0 +1,53 @@
+<div style="height: 600px; border: 1px solid red;">
+  <!--  <p-treeTable [value]="sales" [columns]="scrollableCols" [scrollable]="true"  [frozenColumns]="frozenCols" scrollHeight="500px" frozenWidth="1500px">-->
+  <!--    <ng-template pTemplate="header" let-columns>-->
+  <!--      <tr>-->
+  <!--        <th *ngFor="let col of columns">-->
+  <!--          {{col.header}}-->
+  <!--        </th>-->
+  <!--      </tr>-->
+  <!--    </ng-template>-->
+  <!--    <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">-->
+  <!--      <tr>-->
+  <!--        <td *ngFor="let col of columns; let i = index">-->
+  <!--&lt;!&ndash;          <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>&ndash;&gt;-->
+  <!--          {{rowData[col.field]}}-->
+  <!--        </td>-->
+  <!--      </tr>-->
+  <!--    </ng-template>-->
+  <!--  </p-treeTable>-->
+
+  <p-treeTable [value]="sales" [columns]="scrollableCols" [frozenColumns]="frozenCols" [scrollable]="true" scrollHeight="flex" frozenWidth="1000px">
+    <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+        <col *ngFor="let col of columns" style="width:250px">
+      </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="frozenbody" let-rowNode let-rowData="rowData">
+      <!-- need to fix height to 66 pixels because the height of icon to expand ? -->
+      <tr style="height: 66px">
+        <td>
+          <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+          {{rowData.brand}}
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData="rowData" let-rowNode let-columns="columns">
+      <tr style="height: 66px">
+        <td *ngFor="let col of columns; let i = index">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-treeTable>
+</div>
