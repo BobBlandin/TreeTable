@@ -1,10 +1,11 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {TreeNode} from "primeng/api";
 
 @Component({
   selector: 'tree-table',
   templateUrl: './tree-table.component.html',
-  styleUrls: ['./tree-table.component.css']
+  styleUrls: ['./tree-table.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TreeTableComponent implements OnInit, AfterViewInit {
   sales!: TreeNode[];
@@ -22,9 +23,10 @@ export class TreeTableComponent implements OnInit, AfterViewInit {
    * @returns the value of the variable 'x'
    */
   private initScrollFrozen(): void {
-    const frozenBody: HTMLElement | null = document.querySelector('.p-treetable-frozen-view .p-treetable-scrollable-body');
-    const scrollableArea: HTMLElement | null = document.querySelector('.p-treetable-unfrozen-view .p-treetable-scrollable-body');
+    const frozenBody: HTMLElement | null = document.querySelector('.p-treetable-frozen-view .p-treetable-virtual-scrollable-body');
+    const scrollableArea: HTMLElement | null = document.querySelector('.p-treetable-unfrozen-view .p-treetable-virtual-scrollable-body');
     if (!frozenBody || !scrollableArea) {
+      console.log('Could not find the frozen body or scrollable area : ' + frozenBody + ' ' + scrollableArea);
       return;
     }
     frozenBody.addEventListener('wheel', e => {
