@@ -1,7 +1,7 @@
 <div style="height: 700px; border: 1px solid red;">
 
   <p-treeTable [value]="sales" selectionMode="single" [columns]="scrollableCols" [frozenColumns]="frozenCols" [scrollable]="true" scrollHeight="flex"
-               frozenWidth="1000px" [virtualScroll]="true" [virtualRowHeight]="34">
+               frozenWidth="1000px" [virtualScroll]="true" [virtualRowHeight]="34" [resizableColumns]="true" columnResizeMode="expand">
     <ng-template pTemplate="colgroup" let-columns>
       <colgroup>
         <col *ngFor="let col of columns" style="width:250px">
@@ -10,19 +10,20 @@
     <ng-template pTemplate="header" let-columns>
 
       <tr>
-        <th *ngFor="let col of columns">
+        <th *ngFor="let col of columns" ttResizableColumn>
           {{col.header}}
         </th>
       </tr>
     </ng-template>
 
-    <ng-template pTemplate="frozenbody" let-rowNode let-rowData="rowData" [ngClass]="'yolo'">
+    <ng-template pTemplate="frozenbody" let-rowNode let-rowData="rowData">
       <!-- need to fix height to 66 pixels because the height of icon to expand ? -->
       <tr style="height: 66px">
         <td>
           <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
           {{rowData.brand}}
         </td>
+        <td></td>
       </tr>
     </ng-template>
 

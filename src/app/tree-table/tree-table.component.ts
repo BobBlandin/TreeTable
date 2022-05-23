@@ -54,7 +54,9 @@ export class TreeTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.frozenCols = [
-      {field: 'brand', header: 'Brand'}
+      {field: 'brand', header: 'Brand'},
+      {field: 'brand', header: 'Empty'}
+
     ];
 
     this.scrollableCols = [
