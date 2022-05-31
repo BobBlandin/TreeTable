@@ -1,7 +1,7 @@
 <div style="height: 700px; border: 1px solid red;">
 
   <p-treeTable [value]="sales" selectionMode="single" [columns]="scrollableCols" [frozenColumns]="frozenCols" [scrollable]="true" scrollHeight="flex"
-               frozenWidth="1000px" [virtualScroll]="true" [virtualRowHeight]="34" [resizableColumns]="true" columnResizeMode="expand">
+               frozenWidth="1700px" [virtualScroll]="true" [virtualRowHeight]="34" [resizableColumns]="true" columnResizeMode="expand">
     <ng-template pTemplate="colgroup" let-columns>
       <colgroup>
         <col *ngFor="let col of columns" style="width:250px">
